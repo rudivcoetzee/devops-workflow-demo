@@ -33,9 +33,11 @@ jobs:
           
       - name: Install dependencies
         run: npm install
+        working-directory: src
         
       - name: Build
         run: npm run build
+        working-directory: src
 
   test:
     name: Test
@@ -63,12 +65,15 @@ jobs:
           
       - name: Install dependencies
         run: npm install
+        working-directory: src
         
       - name: Run unit tests
         run: npm test
+        working-directory: src
         
       - name: Code quality checks
         run: npm run lint && npm run coverage
+        working-directory: src
 
   deploy:
     name: Deploy

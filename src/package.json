@@ -1,7 +1,7 @@
 {
-  "name": "my-project",
+  "name": "devops-workflow-demo",
   "version": "1.0.0",
-  "description": "A brief description of my project",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "coverage": "jest --coverage"
   },
-  "author": "Your Name",
+  "author": "Rudi",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",

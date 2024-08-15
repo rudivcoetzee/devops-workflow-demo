@@ -1,27 +1,19 @@
 {
   "name": "devops-workflow-demo",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple Node.js project with a CI/CD pipeline using GitHub Actions",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "jest",
-    "build": "tsc",
-    "lint": "eslint .",
-    "coverage": "jest --coverage"
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"Build step - customize as needed\"",
+    "lint": "echo \"Lint step - add ESLint or similar tool\"",
+    "coverage": "echo \"Coverage step - add Jest or similar tool\""
   },
-  "author": "Rudi",
+  "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^6.0.14"
+    "express": "^4.18.2"
   },
-  "devDependencies": {
-    "jest": "^28.0.0",
-    "eslint": "^8.0.0",
-    "typescript": "^4.5.5"
-  },
-  "engines": {
-    "node": ">=20.0.0"
-  }
+  "devDependencies": {}
 }

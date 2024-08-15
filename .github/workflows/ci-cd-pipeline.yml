@@ -15,35 +15,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: List files
-        run: ls -la
-        
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-          
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-          
+
       - name: Install dependencies
         run: npm install
         working-directory: src
         
-      - name: Build
+      - name: Build the project
         run: npm run build
         working-directory: src
-
+        
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: build-artifacts
-          path: src/build/
+          path: src/build/ # Replace with your actual build directory
 
   test:
     name: Test
@@ -52,23 +41,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: List files
-        run: ls -la
         
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-          
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-          
+
       - name: Install dependencies
         run: npm install
         working-directory: src
@@ -77,13 +55,13 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifacts
-          path: src/build/
+          path: src/build/ # Replace with your actual build directory
         
       - name: Run unit tests
         run: npm test
         working-directory: src
         
-      - name: Code quality checks
+      - name: Run code quality checks
         run: npm run lint && npm run coverage
         working-directory: src
 
@@ -99,7 +77,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifacts
-          path: src/build/
+          path: src/build/ # Replace with your actual build directory
 
       - name: Deploy to Staging
         env:

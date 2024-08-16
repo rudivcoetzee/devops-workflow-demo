@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-artifacts
-          path: src/build/ # Replace with your actual build directory
+          path: src/build/
 
   test:
     name: Test
@@ -55,7 +55,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifacts
-          path: src/build/ # Replace with your actual build directory
+          path: src/build/
         
       - name: Run unit tests
         run: npm test
@@ -77,12 +77,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifacts
-          path: src/build/ # Replace with your actual build directory
+          path: src/build/
 
       - name: Deploy to Staging
         env:
           STAGING_SERVER: ${{ secrets.STAGING_SERVER }}
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
-          echo "Deploying to staging server..."
-          # Add your deployment script or commands here
